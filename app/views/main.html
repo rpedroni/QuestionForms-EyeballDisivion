@@ -1,0 +1,17 @@
+<h1>Hello, Cerebro</h1>
+
+<h3>Question directives</h3>
+
+<rp-question-form on-update="onUpdate(form, validations)">
+
+  <rp-question ng-repeat="question in questions"
+  question="question"
+  index="{{ $index }}"
+  ng-show="$index === 0 ? true : blockValidations[$index - 1]"
+  />
+  <br><br>
+
+</rp-question-form>
+
+<br><br>
+<span ng-show="formValid">Form is valid and ready to submit!</span>
