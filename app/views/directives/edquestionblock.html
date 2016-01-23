@@ -1,0 +1,18 @@
+<div class="q-block">
+
+  <span ng-repeat="part in parts | orderBy: 'position'" ng-switch="isQuestion(part)">
+
+    <span ng-switch-when="false" class="q-text">
+      {{ part.text }}
+    </span>
+
+    <ed-question ng-switch-when="true"
+    question="part.question"
+    block-index="{{ index }}"
+    index="{{ questionIndex(part) }}"
+    class="q-question"
+    />
+
+  </span>
+
+</div>

@@ -1,9 +1,9 @@
 'use strict';
 
-describe('Directive: rpQuestionBlock', function () {
+describe('Directive: edQuestionDropdown', function () {
 
   // load the directive's module
-  beforeEach(module('rpedroniIt1FunnelApp'));
+  beforeEach(module('it1_app'));
 
   var element,
     scope;
@@ -13,8 +13,8 @@ describe('Directive: rpQuestionBlock', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<rp-question-block></rp-question-block>');
+    element = angular.element('<ed-question-dropdown></ed-question-dropdown>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the rpQuestionBlock directive');
+    expect(element.text()).toBe('this is the edQuestionDropdown directive');
   }));
 });

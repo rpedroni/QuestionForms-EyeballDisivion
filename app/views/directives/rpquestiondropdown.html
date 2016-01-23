@@ -1,6 +1,0 @@
-<select name="{{ 'question_' + index }}" ng-change="onUpdate()" ng-model="model" required>
-  <option ng-if="question.meta.placeholder" value="">{{ question.meta.placeholder }}</option>
-  <option ng-repeat="option in question.meta.options" value="{{ option.value }}">
-    {{ option.text }}
-  </option>
-</select>

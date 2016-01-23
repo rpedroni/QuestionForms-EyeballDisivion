@@ -1,9 +1,9 @@
 'use strict';
 
-describe('Directive: rpQuestion', function () {
+describe('Directive: edQuestionForm', function () {
 
   // load the directive's module
-  beforeEach(module('rpedroniIt1FunnelApp'));
+  beforeEach(module('it1_app'));
 
   var element,
     scope;
@@ -13,8 +13,8 @@ describe('Directive: rpQuestion', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<rp-question></rp-question>');
+    element = angular.element('<ed-question-form></ed-question-form>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the rpQuestion directive');
+    expect(element.text()).toBe('this is the edQuestionForm directive');
   }));
 });

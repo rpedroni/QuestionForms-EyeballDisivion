@@ -1,17 +1,21 @@
-<h1>Hello, Cerebro</h1>
+<h1>Cerebro - Funnel Form</h1>
 
-<h3>Question directives</h3>
-
-<rp-question-form on-update="onUpdate(form, validations)">
-
-  <rp-question ng-repeat="question in questions"
-  question="question"
-  index="{{ $index }}"
-  ng-show="$index === 0 ? true : blockValidations[$index - 1]"
-  />
-  <br><br>
-
-</rp-question-form>
+{{ blockValidations }}
 
 <br><br>
+
+<ed-question-form on-update="onUpdate(form, validationTree)" form-structure="formStructure">
+
+  <ed-question-block
+  ng-repeat="block in formStructure.blocks"
+  block="block"
+  index="{{ $index }}"
+  ng-show="$index === 0 ? true : validationTree.blocks[$index - 1].valid"
+  />
+
+
+</ed-question-form>
+
+<br><br>
+
 <span ng-show="formValid">Form is valid and ready to submit!</span>

@@ -3,7 +3,7 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('rpedroniIt1FunnelApp'));
+  beforeEach(module('it1_app'));
 
   var MainCtrl,
     scope;

@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name rpedroniIt1FunnelApp
+ * @name it1_app
  * @description
- * # rpedroniIt1FunnelApp
+ * # it1_app
  *
  * Main module of the application.
  */
 angular
-  .module('rpedroniIt1FunnelApp', [
+  .module('it1_app', [
     'ngRoute'
   ])
   .config(function ($routeProvider) {
