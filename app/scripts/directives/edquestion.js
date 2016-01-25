@@ -16,11 +16,14 @@ angular.module('it1_app')
     // Determine the type of question/answer directive we want to use
     switch (question.type) {
       case 'input':
-        questionDirective = 'ed-question-input';
-        break;
+      questionDirective = 'ed-question-input';
+      break;
       case 'dropdown':
-        questionDirective = 'ed-question-dropdown';
-        break;
+      questionDirective = 'ed-question-dropdown';
+      break;
+      case 'radio':
+      questionDirective = 'ed-question-radio';
+      break;
       default:
       console.warn('unknown question type');
     }

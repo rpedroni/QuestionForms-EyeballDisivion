@@ -18,18 +18,6 @@ angular.module('it1_app')
 
     controller: function($scope) {
 
-      var createValidations = function(form, questions) {
-        var validations = {
-          form: !form.$invalid,
-          blocks: []
-        };
-        questions.forEach(function(question) {
-          validations.blocks.push(!question.$invalid);
-        });
-
-        return validations;
-      };
-
       // onUpdate's responsible for building the validation and form
       // model objects, based on inner structures (blocks and questions)
       this.onQuestionUpdate = function() {
@@ -66,22 +54,9 @@ angular.module('it1_app')
             validationTree.blocks[blockIndex].questions.push(q.$valid);
             blockValid = blockValid && q.$valid;
           }
+
           validationTree.blocks[blockIndex].valid = blockValid;
-
         });
-
-        //
-        // var i = 0, formQuestions = [];
-        // while(true) {
-        //   var q = form['question_' + i++];
-        //   if (q) {
-        //     formQuestions.push(q);
-        //   } else {
-        //     break;
-        //   }
-        // }
-
-        // var validations = createValidations(form, formQuestions);
 
         $scope.onUpdate({ form: form, validationTree: validationTree });
       };

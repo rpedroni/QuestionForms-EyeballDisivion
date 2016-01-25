@@ -13,26 +13,27 @@ angular.module('it1_app')
   var formStructure = {
     blocks: [
       {
-        texts: [
+        texts: [ // Ordered list
           { position: 0, text: 'My name is' },
-          { position: 2, text: 'and I am a' },
+          { position: 4, text: 'TEXT TEXT |' },
+          { position: 5, text: 'and some more text here.' },
         ],
-        questions: [
+        questions: [ // Ordered list
           { position: 1, question: { type: 'input', meta: { inputType: 'email', placeholder: 'Your E-mail' } } },
+          { position: 2, question: { type: 'radio', meta: { placeholder: 'Gender', options: [{ value: 0, text: 'Female' }, { value: 1, text: 'Male' }] } } },
           { position: 3, question:  { type: 'dropdown', meta: { placeholder: 'Your Job', options: [{ value: 0, text: 'Teacher' }, { value: 1, text: 'Fireman' }] } } },
         ],
       },
       {
-        texts: [
+        texts: [ // Ordered list
           { position: 0, text: 'My name is' },
           { position: 2, text: 'and I am a' },
           { position: 5, text: 'and look at these options:' },
         ],
-        questions: [
+        questions: [ // Ordered list
           { position: 1, question: { type: 'input', meta: { inputType: 'text' } } },
           { position: 3, question:  { type: 'dropdown', meta: { placeholder: 'Your Job', options: [{ value: 0, text: 'Teacher' }, { value: 1, text: 'Fireman' }] } } },
           { position: 4, question: { type: 'input', meta: { inputType: 'text', placeholder: 'Another question' } } },
-          { position: 6, question: { type: 'input', meta: { inputType: 'radio', placeholder: 'Hey' } } },
         ],
       },
       //   { type: 'input', meta: { inputType: 'text', placeholder: 'TV Show' } },
@@ -45,11 +46,12 @@ angular.module('it1_app')
 
   $scope.formStructure = formStructure;
 
+  // Validation tree & form
+  $scope.validationTree = {};
   $scope.onUpdate = function(form, validationTree) {
-    console.log(form, validationTree);
+    // console.log(form, validationTree);
     $scope.validationTree = validationTree;
   };
-
-  $scope.validationTree = {};
+  
 
 });

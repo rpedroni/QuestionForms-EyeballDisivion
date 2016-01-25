@@ -11,6 +11,7 @@
   block="block"
   index="{{ $index }}"
   ng-show="$index === 0 ? true : validationTree.blocks[$index - 1].valid"
+  class="q-block"
   />
 
 
@@ -18,4 +19,4 @@
 
 <br><br>
 
-<span ng-show="formValid">Form is valid and ready to submit!</span>
+<span ng-show="validationTree.form">Form is valid and ready to submit!</span>
