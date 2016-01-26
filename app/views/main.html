@@ -4,19 +4,37 @@
 
 <br><br>
 
-<ed-question-form on-update="onUpdate(form, validationTree)" form-structure="formStructure">
+<ed-question-form
+  on-update="onUpdate(form, validationTree, model)"
+  form-structure="formStructure"
+  template="template">
 
   <ed-question-block
-  ng-repeat="block in formStructure.blocks"
-  block="block"
-  index="{{ $index }}"
-  ng-show="$index === 0 ? true : validationTree.blocks[$index - 1].valid"
-  class="q-block"
+    ng-repeat="block in formStructure.blocks"
+    block="block"
+    index="{{ $index }}"
+
+    ng-show="$index === 0 ? true : validationTree.blocks[$index - 1].valid"
   />
+  <!-- *Visualization strategy for this view/controller -->
 
 
 </ed-question-form>
 
+<button ng-click="change()"/>Change Template</button>
+TEMPLATE: {{ template }}
+
 <br><br>
 
-<span ng-show="validationTree.form">Form is valid and ready to submit!</span>
+<h5 ng-show="validationTree.form">
+  Form VALID!
+</h5>
+
+<br><br>
+
+<h5>MODEL</h5>
+{{ model | json }}
+
+
+<h5>ERRORS</h5>
+{{ errors | json }}

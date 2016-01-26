@@ -1,8 +1,20 @@
-<input
-name="{{ name }}"
-type="{{ question.meta.inputType }}"
-required
-ng-change="onUpdate()"
-ng-model="model"
-placeholder="{{ question.meta.placeholder }}"
-/>
+<span>
+
+  <span ng-if="question.meta.label">
+    {{ question.meta.label }}
+  </span>
+
+  <input
+  name="{{ name }}"
+  type="{{ question.meta.inputType }}"
+  required
+  ng-change="onUpdate()"
+  ng-model="model"
+  placeholder="{{ question.meta.placeholder }}"
+  />
+
+  <span ng-if="question.meta.labelAfter">
+    {{ question.meta.labelAfter }}
+  </span>
+
+</span>

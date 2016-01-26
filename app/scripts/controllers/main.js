@@ -10,48 +10,65 @@
 angular.module('it1_app')
 .controller('MainCtrl', function ($scope) {
 
-  var formStructure = {
+  // TODO: define validation/validators for each input type (e.g. min/max length, regex, etc.)
+
+  $scope.formStructure = {
     blocks: [
       {
         texts: [ // Ordered list
           { position: 0, text: 'My name is' },
-          { position: 4, text: 'TEXT TEXT |' },
-          { position: 5, text: 'and some more text here.' },
+          { position: 2, text: 'and I am a' },
         ],
         questions: [ // Ordered list
-          { position: 1, question: { type: 'input', meta: { inputType: 'email', placeholder: 'Your E-mail' } } },
-          { position: 2, question: { type: 'radio', meta: { placeholder: 'Gender', options: [{ value: 0, text: 'Female' }, { value: 1, text: 'Male' }] } } },
-          { position: 3, question:  { type: 'dropdown', meta: { placeholder: 'Your Job', options: [{ value: 0, text: 'Teacher' }, { value: 1, text: 'Fireman' }] } } },
+          { position: 1, question: { type: 'input', meta: { inputType: 'text', placeholder: 'Jane Doe' } } },
+          { position: 3, question:  { type: 'dropdown', meta: { placeholder: 'Your Job', options: [{ value: 0, text: 'student' }, { value: 1, text: 'teacher' }] } } },
+          { position: 4, question:  { type: 'conditional', meta: { question: { type: 'input', meta: { inputType: 'text', placeholder: 'Jane Doe' } } } } },
+          // { position: 4, question: { type: 'radio', meta: { placeholder: 'Gender', options: [{ value: 0, text: 'Female' }, { value: 1, text: 'Male' }] } } },
+          // { position: 5, question: { type: 'input', meta: { inputType: 'checkbox', labelAfter: 'Do you agree?' } } },
         ],
       },
       {
         texts: [ // Ordered list
-          { position: 0, text: 'My name is' },
-          { position: 2, text: 'and I am a' },
-          { position: 5, text: 'and look at these options:' },
+          { position: 1, text: 'on a sports team.' },
         ],
         questions: [ // Ordered list
-          { position: 1, question: { type: 'input', meta: { inputType: 'text' } } },
-          { position: 3, question:  { type: 'dropdown', meta: { placeholder: 'Your Job', options: [{ value: 0, text: 'Teacher' }, { value: 1, text: 'Fireman' }] } } },
-          { position: 4, question: { type: 'input', meta: { inputType: 'text', placeholder: 'Another question' } } },
+          { position: 0, question:  { type: 'dropdown', meta: { options: [{ value: 0, text: 'I play' }, { value: 1, text: 'I do not play' }] } } },
         ],
       },
-      //   { type: 'input', meta: { inputType: 'text', placeholder: 'TV Show' } },
-      //   'is my favorite TV Show and',
-      //   { type: 'dropdown', meta: { placeholder: 'Console', options: [{ value: 0, text: 'Playstation 4' }, { value: 1, text: 'XBOX One' }] } },
-      //   'is my favorite video game console.',
-      // ]
+      {
+        texts: [ // Ordered list
+          { position: 0, text: 'My GPA is' },
+        ],
+        questions: [ // Ordered list
+          { position: 1, question:  { type: 'input', meta: { inputType: 'number', placeholder: 'GPA' } } },
+        ],
+      },
+      {
+        texts: [ // Ordered list
+          { position: 0, text: 'My mom\'s maiden name is' },
+          { position: 2, text: 'and I am her' },
+        ],
+        questions: [ // Ordered list
+          { position: 1, question: { type: 'input', meta: { inputType: 'text', placeholder: 'Smith' } } },
+          { position: 3, question:  { type: 'dropdown', meta: { options: [{ value: 0, text: 'son' }, { value: 1, text: 'daughter' }] } } },
+        ],
+      },
     ]
   };
 
-  $scope.formStructure = formStructure;
-
   // Validation tree & form
   $scope.validationTree = {};
-  $scope.onUpdate = function(form, validationTree) {
-    // console.log(form, validationTree);
+  $scope.onUpdate = function(form, validationTree, model) {
     $scope.validationTree = validationTree;
+    $scope.errors = form.$error;
+    $scope.model = model;
   };
-  
+
+
+  // TODO: Dummy stuffy
+  $scope.change = function() {
+    $scope.template = $scope.template === 'A' ? 'B' : 'A';
+  };
+  $scope.change();
 
 });
