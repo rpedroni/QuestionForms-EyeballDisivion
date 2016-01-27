@@ -8,31 +8,39 @@
 */
 angular.module('it1_app')
 .directive('edQuestionForm', function () {
+
+  // Find all the controls in the form
+  var _getFormControls = function(form) {
+    var controls = [];
+    angular.forEach(form, function (value) {
+      if (typeof value === 'object' && value.hasOwnProperty('$modelValue')) {
+        controls.push(value);
+      }
+    });
+    return controls;
+  };
+
+  var _getControlsByBlocks = function(formControls) {
+
+  };
+
   return {
     scope: {
       formStructure: '=',
       onUpdate: '&',
-
       template: '='
     },
-    transclude: true,
-    // template: '<form name="form" novalidate ng-transclude class="q-form"></form>',
 
-    // TODO: Examine best way to use this
+    transclude: true,
     templateUrl: '../../views/directives/ed-question-form.html',
-    // function(elem, attrs) {
-    //   console.log(attrs);
-    //   var template = '<form name="form" novalidate ng-transclude class="q-form"></form>';
-    //   template += '<div ng-include="\'../../views/directives/form-templates/form-template-A.html\'" />';
-    //   return template;
-    // },
 
     link: function(scope) {
-      // TODO: Template path
 
+      // TODO: Template path
       scope.templatePath = '../../views/directives/form-templates/' + scope.template + '.html';
+      // TODO: do we need the $watch or loading a template once is good enough? - Probably is!
       scope.$watch('template', function(t) {
-        scope.templatePath = '../../views/directives/form-templates/' + t + '.html';        
+        scope.templatePath = '../../views/directives/form-templates/' + t + '.html';
       });
 
 
@@ -46,14 +54,19 @@ angular.module('it1_app')
 
         var form = $scope.form;
 
-        // Structure template
-        /* {
+        console.log(form.$valid);
+        // var formControls = _getFormControls(form);
+        // console.log(formControls);
+
+        /* Structure template
+        {
         valid: false,
         blocks: [
         { valid: false, questions: [false, true, true] },
         { valid: true, questions: [true, true] },
         ]
-        } */
+        }
+        */
         var validationTree = { form: form.$valid, blocks: [] };
 
         // Model
@@ -76,6 +89,7 @@ angular.module('it1_app')
 
           // Questions
           var blockValid = true;
+
           for (var questionIndex = 0; questionIndex < block.questions.length; questionIndex++) {
 
             var index = 'question_' + blockIndex + '_' + questionIndex;
@@ -92,6 +106,7 @@ angular.module('it1_app')
 
         $scope.onUpdate({ form: form, validationTree: validationTree, model: model });
       };
+
     }
   };
 });

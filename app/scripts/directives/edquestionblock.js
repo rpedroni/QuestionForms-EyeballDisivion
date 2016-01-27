@@ -13,6 +13,7 @@ angular.module('it1_app')
     return !!part.question;
   };
 
+  // TODO: This logic must be changed if server can't respond with the ~given structure
   var _questionIndex = function(questions) {
     return function(question) {
       return questions.findIndex(function(q) {

@@ -1,14 +1,16 @@
 <select
 name="{{ name }}"
 ng-change="onUpdate()"
+
+ng-options="option.value as option.text for option in question.meta.options"
 ng-model="model"
+ng-init="model = question.meta.placeholder ? null : (model || question.meta.options[0].value)"
+
 required>
 
   <option ng-if="question.meta.placeholder" value="">
     {{ question.meta.placeholder }}
   </option>
-  <option ng-repeat="option in question.meta.options" value="{{ option.value }}">
-    {{ option.text }}
-  </option>
+
 
 </select>

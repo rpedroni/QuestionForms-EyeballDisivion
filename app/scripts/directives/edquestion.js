@@ -7,23 +7,31 @@
 * # edQuestion
 */
 angular.module('it1_app')
-.directive('edQuestion', function ($compile) {
+.directive('edQuestion', function ($compile, controlNamingScheme) {
 
   // Try to find directive for the specific question type
   var _getQuestionDirective = function(question) {
     var questionDirective;
 
     // Determine the type of question/answer directive we want to use
+    // TODO: Automatic question type registration?
     switch (question.type) {
       case 'input':
       questionDirective = 'ed-question-input';
       break;
+
       case 'dropdown':
       questionDirective = 'ed-question-dropdown';
       break;
+
       case 'radio':
       questionDirective = 'ed-question-radio';
       break;
+
+      case 'conditional':
+      questionDirective = 'ed-question-conditional';
+      break;
+
       default:
       console.warn('unknown question type');
     }
@@ -50,12 +58,13 @@ angular.module('it1_app')
         // use it to communicate with parent
         scope.onUpdate = questionFormCtrl.onQuestionUpdate;
 
-        // question inputs name definition
-        scope.name = 'question_' + scope.blockIndex + '_' + scope.index;
+        // Name definition for each question based on block and individual index
+        scope.name = controlNamingScheme.namingScheme(scope.blockIndex, scope.index);
 
+        // Build 'em
         var e = angular.element('<' + questionDirective + ' />');
-        element.append(e);
         $compile(e)(scope);
+        element.append(e);
       }
 
     }
