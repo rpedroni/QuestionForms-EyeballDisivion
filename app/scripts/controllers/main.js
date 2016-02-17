@@ -14,42 +14,42 @@ angular.module('it1_app')
 
   $scope.formStructure = {
     blocks: [
-      {
-        texts: [ // Ordered list
-          {
-            position: 0,
-            text: 'My name is',
-            // isHeading: false
-          },
-          {
-            position: 2,
-            text: 'and I am a',
-            // isHeading: true
-          },
-        ],
-        questions: [ // Ordered list
-          {
-            position: 1,
-            // Actually the id, just transposed to name
-            question: {
-              name: '238947jhsdf90',
-              type: 'input',
-              meta: {
-                inputType: 'text',
-                placeholder: 'Jane Doe',
-                validation: {
-                  required: true, minLength: 2, maxLength: 5//, pattern: /^\d_XXX$/
-                }
-              }
-            }
-          },
-          {
-            position: 3,
-            // id: 7,
-            question: { type: 'dropdown', meta: { placeholder: 'Your Job', options: [{ value: 0, text: 'student' }, { value: 1, text: 'teacher' }] } }
-          },
-        ],
-      },
+      // {
+      //   texts: [ // Ordered list
+      //     {
+      //       position: 0,
+      //       text: 'My name is',
+      //       // isHeading: false
+      //     },
+      //     {
+      //       position: 2,
+      //       text: 'and I am a',
+      //       // isHeading: true
+      //     },
+      //   ],
+      //   questions: [ // Ordered list
+      //     {
+      //       position: 1,
+      //       // Actually the id, just transposed to name
+      //       question: {
+      //         name: '238947jhsdf90',
+      //         type: 'input',
+      //         meta: {
+      //           inputType: 'text',
+      //           placeholder: 'Jane Doe',
+      //           validation: {
+      //             required: true, minLength: 2, maxLength: 5//, pattern: /^\d_XXX$/
+      //           }
+      //         }
+      //       }
+      //     },
+      //     {
+      //       position: 3,
+      //       // id: 7,
+      //       question: { type: 'dropdown', meta: { placeholder: 'Your Job', options: [{ value: 0, text: 'student' }, { value: 1, text: 'teacher' }] } }
+      //     },
+      //   ],
+      // },
       {
         texts: [ // Ordered list
         ],
@@ -69,26 +69,29 @@ angular.module('it1_app')
         },
         ],
       },
-      {
-        texts: [ // Ordered list
-          { position: 0, text: 'My GPA is' },
-          { position: 2, text: 'and I am a' },
-        ],
-        questions: [ // Ordered list
-          { position: 1, question:  { name: 'gpa_value', type: 'input', meta: { inputType: 'number', placeholder: 'GPA' } } },
-          { position: 3, question: { type: 'dropdown', meta: { placeholder: 'Gender', options: [{ value: 0, text: 'boy' }, { value: 1, text: 'girl' }] } } },
-        ],
-      },
-      {
-        texts: [ // Ordered list
-          { position: 0, text: 'My mom\'s maiden name is' },
-          { position: 2, text: 'and I am her' },
-        ],
-        questions: [ // Ordered list
-          { position: 1, question: { type: 'input', meta: { inputType: 'text', placeholder: 'Smith' } } },
-          { position: 3, question:  { type: 'dropdown', meta: { options: [{ value: 0, text: 'son' }, { value: 1, text: 'daughter' }] } } },
-        ],
-      },
+      // {
+      //   texts: [ // Ordered list
+      //     { position: 0, text: 'My GPA is' },
+      //     { position: 2, text: 'and I am a' },
+      //   ],
+      //   questions: [ // Ordered list
+      //     { position: 1, question:  { name: 'gpa_value', type: 'input', meta: { inputType: 'number', placeholder: 'GPA' } } },
+      //     { position: 3, question: { type: 'dropdown',
+      //       meta: { placeholder: 'Gender', options: [{ value: 0, text: 'boy' }, { value: 1, text: 'girl' }] } }
+      //     },
+      //   ],
+      // },
+      // {
+      //   texts: [ // Ordered list
+      //     { position: 0, text: 'My mom\'s maiden name is' },
+      //     { position: 2, text: 'and I am her' },
+      //   ],
+      //   questions: [ // Ordered list
+      //     { position: 1, question: { type: 'input', meta: { inputType: 'text', placeholder: 'Smith'  } } },
+      //     { position: 3, question:  { type: 'dropdown', meta: { options: [{ value: 0, text: 'son' }, { value: 1, text: 'daughter' }] } } },
+      //     { position: 4, question:  { type: 'radio', meta: { options: [{ value: 0, text: 'I like this one' }, { value: 1, text: 'No, this one' }], validation: { required: true } } } },
+      //   ],
+      // },
     ]
   };
 

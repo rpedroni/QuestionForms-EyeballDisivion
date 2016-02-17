@@ -9,7 +9,7 @@ name="{{ name }}"
 ng-change="onUpdate()"
 ng-options="option.value as option.label for option in displayOptions"
 ng-model="show"
-required>
+ng-required="question | validation:'required'">
 </select>
 
 <ed-question ng-if="show"

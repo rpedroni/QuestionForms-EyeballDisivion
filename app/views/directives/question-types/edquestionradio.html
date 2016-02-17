@@ -1,16 +1,16 @@
-<span ng-repeat="option in question.meta.options">
+<span ng-repeat="option in question.meta.options" ng-init="model = { option: 0 }">
 
   <label ng-if="option.text">
     {{ option.text }}
   </label>
 
+  <!-- Default selection on first radio -->
   <input
   type="radio"
   name="{{ name }}"
   ng-value="option.value"
   ng-change="onUpdate()"
   ng-model="model.option"
-  required
   />
 
 </span>
