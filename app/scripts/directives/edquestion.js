@@ -42,8 +42,7 @@ angular.module('it1_app')
     scope: {
       question: '=',
       blockIndex: '@',
-      index: '@',
-      validations: '=?'
+      index: '@'
     },
 
     // Require the form directive's controller to gain access to the onQuestionUpdate method

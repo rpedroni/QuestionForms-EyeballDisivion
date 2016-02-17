@@ -7,10 +7,14 @@
   <input
   name="{{ name }}"
   type="{{ question.meta.inputType }}"
-  required
   ng-change="onUpdate()"
   ng-model="model"
   placeholder="{{ question.meta.placeholder }}"
+
+  ng-required="question | validation:'required'"
+  ng-minlength="question | validation:'minLength'"
+  ng-maxlength="question | validation:'maxLength'"
+  ng-pattern="question | validation:'pattern'"
   />
 
   <span ng-if="question.meta.labelAfter">
