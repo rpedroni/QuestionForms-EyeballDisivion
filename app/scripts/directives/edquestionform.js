@@ -7,7 +7,7 @@
 * # edQuestionForm
 */
 angular.module('it1_app')
-.directive('edQuestionForm', function () {
+.directive('edQuestionForm', function (controlNamingScheme) {
 
   // Find all the controls in the form
   var _getFormControls = function(form) {
@@ -43,68 +43,56 @@ angular.module('it1_app')
         scope.templatePath = '../../views/directives/form-templates/' + t + '.html';
       });
 
-
     },
 
     controller: function($scope) {
 
-      // onUpdate's responsible for building the validation and form
+      var _questionReferences = []
+
+      // Add reference to each individual question - makes it easier to fetch
+      // reference to question later on when validating
+      this.addQuestionReference = function(questionInfo) {
+        if (_questionReferences.filter(function(q) { return q.name === questionInfo.name }).length === 0) {
+          _questionReferences.push(questionInfo)
+        }
+      }
+
+      // onQuestionUpdate is responsible for building the validation and form
       // model objects, based on inner structures (blocks and questions)
       this.onQuestionUpdate = function() {
 
+        // Get form controller
         var form = $scope.form;
 
-        console.log(form.$valid);
-        // var formControls = _getFormControls(form);
-        // console.log(formControls);
+        // -- Get validity from form controller
+        var formValidationTree = { valid: form.$valid, blocks: {} }
 
-        /* Structure template
-        {
-        valid: false,
-        blocks: [
-        { valid: false, questions: [false, true, true] },
-        { valid: true, questions: [true, true] },
-        ]
-        }
-        */
-        var validationTree = { form: form.$valid, blocks: [] };
-
-        // Model
+        // -- Build model by getting each question and normalizing values into a flat object
         var model = {};
 
-        // If we want to go over all the errors in the form
-        // Object.keys(form.$error).forEach(function(key) {
-        //   console.log(key, form.$error[key]);
-        // });
+        // -- Start block validation objects with all true values
+        $scope.formStructure.blocks.forEach(function(b, blockIndex) {
+          formValidationTree.blocks[blockIndex] = { valid: true, questions: {} }
+        })
 
-        // Loop through all the existing questions and verify if each question
-        // and each block is valid or not
+        // -- For each existent question in form, find it by the added reference
+        _questionReferences.forEach(function(questionInfo) {
+          var questionController = form[questionInfo.name]
 
-        // Blocks (valid if all internal questions are valid)
-        $scope.formStructure.blocks.forEach(function(block, blockIndex) {
-
-          validationTree.blocks.push({
-            valid: false, questions: []
-          });
-
-          // Questions
-          var blockValid = true;
-
-          for (var questionIndex = 0; questionIndex < block.questions.length; questionIndex++) {
-
-            var index = 'question_' + blockIndex + '_' + questionIndex;
-            var q = form[index];
-
-            model[index] = q.$modelValue;
-
-            validationTree.blocks[blockIndex].questions.push(q.$valid);
-            blockValid = blockValid && q.$valid;
+          // If the question exists
+          if (questionController) {
+            // Save the model value
+            model[questionInfo.name] = questionController.$modelValue
+            // Find which block it belongs to
+            var blockIndex = questionInfo.block
+            // Update if block is valid or not based if it's questions are all valid
+            formValidationTree.blocks[blockIndex].valid = formValidationTree.blocks[blockIndex].valid && questionController.$valid
+            // Update if question is valid or not
+            formValidationTree.blocks[blockIndex].questions[questionInfo.name] = { valid: questionController.$valid }
           }
+        })
 
-          validationTree.blocks[blockIndex].valid = blockValid;
-        });
-
-        $scope.onUpdate({ form: form, validationTree: validationTree, model: model });
+        $scope.onUpdate({ form: form, validationTree: formValidationTree, model: model });
       };
 
     }

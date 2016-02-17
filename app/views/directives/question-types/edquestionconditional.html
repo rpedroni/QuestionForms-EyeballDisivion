@@ -1,0 +1,20 @@
+
+<!-- <ed-question
+question="{ type: 'dropdown', meta: { placeholder: 'Your Job', options: [{ value: 0, text: 'student' }, { value: 1, text: 'teacher' }] } }"
+block-index="{{ blockIndex }}"
+index="{{ index }}"
+/> -->
+<select
+name="{{ name }}"
+ng-change="onUpdate()"
+ng-options="option.value as option.label for option in displayOptions"
+ng-model="show"
+required>
+</select>
+
+<ed-question ng-if="show"
+question="question.meta.question"
+block-index="{{ blockIndex }}"
+index="{{ conditionalQuestionIndex }}"
+validations="{ required: show, max: 3, min: 1 }"
+/>

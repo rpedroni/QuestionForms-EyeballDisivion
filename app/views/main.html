@@ -1,9 +1,5 @@
 <h1>Cerebro - Funnel Form</h1>
 
-{{ blockValidations }}
-
-<br><br>
-
 <ed-question-form
   on-update="onUpdate(form, validationTree, model)"
   form-structure="formStructure"
@@ -33,6 +29,7 @@ TEMPLATE: {{ template }}
 <h5>MODEL</h5>
 {{ model | json }}
 
+<br><br>
 
 <h5>ERRORS</h5>
 {{ errors | json }}
