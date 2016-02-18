@@ -22,6 +22,7 @@ angular.module('it1_app')
       case 'conditional':
       case 'checkbox':
       case 'button':
+      case 'textarea':
       questionDirective = 'ed-question-' + question.type
       break
 

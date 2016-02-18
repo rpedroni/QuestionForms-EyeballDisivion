@@ -11,10 +11,10 @@ angular.module('it1_app')
 .controller('MainCtrl', function ($scope, $http) {
 
   // Possible question types
-  // button [ ]
+  // button [X]
   // list [ ]
-  // input [ ] (input)
-  // case-notes [ ]
+  // input [X] (input)
+  // case-notes [ ] (textarea)
   // checkbox [X] (checkbox)
   // solar-dropdown [X] (dropdown)
 
@@ -69,6 +69,10 @@ angular.module('it1_app')
               options: [{ value: 0, text: 'apples' }, { value: 1, text: 'bananas' }, { value: 2, text: 'strawberries' }],
               validation: { minSelections: 2, maxSelections: 2 }
             } }
+          },
+          {
+            position:5 , question: { type: 'textarea', name: 'my_textarea', meta: { placeholder: 'Text goes here',
+            validation: { minLength: 5 } }}
           }
         ],
       },
