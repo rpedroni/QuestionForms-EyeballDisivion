@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /**
  * @ngdoc directive
@@ -10,5 +10,5 @@ angular.module('it1_app')
   .directive('edQuestionRadio', function () {
     return {
       templateUrl: '../../../views/directives/question-types/edquestionradio.html'
-    };
-  });
+    }
+  })

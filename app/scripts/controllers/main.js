@@ -12,9 +12,9 @@ angular.module('it1_app')
 
   // Possible question types
   // button [X]
-  // list [ ]
+  // list [ ] (possible same thing as button, vertically oriented)
   // input [X] (input)
-  // case-notes [ ] (textarea)
+  // case-notes [X] (textarea)
   // checkbox [X] (checkbox)
   // solar-dropdown [X] (dropdown)
 
@@ -41,38 +41,43 @@ angular.module('it1_app')
           },
         ],
         questions: [ // Ordered list
+          // {
+          //   position: 1,
+          //   // Actually the id, just transposed to name
+          //   question: {
+          //     name: '238947jhsdf90',
+          //     type: 'input',
+          //     meta: {
+          //       inputType: 'text',
+          //       placeholder: 'Jane Doe',
+          //       validation: {
+          //         required: true, minLength: 2, maxLength: 5//, pattern: /^\d_XXX$/
+          //       }
+          //     }
+          //   }
+          // },
+          // {
+          //   position: 3,
+          //   // id: 7,
+          //   question: { type: 'dropdown', meta: { placeholder: 'Your Job', options: [{ value: 0, text: 'student' }, { value: 1, text: 'teacher' }] } }
+          // },
+          // {
+          //   position: 4,
+          //   question: { type: 'checkbox',
+          //   name: 'asjkashdkjasd',
+          //   meta: {
+          //     options: [{ value: 0, text: 'apples' }, { value: 1, text: 'bananas' }, { value: 2, text: 'strawberries' }],
+          //     validation: { minSelections: 2, maxSelections: 2 }
+          //   } }
+          // },
+          // {
+          //   position:5 , question: { type: 'textarea', name: 'my_textarea', meta: { placeholder: 'Text goes here',
+          //   validation: { minLength: 5 } }}
+          // },
           {
-            position: 1,
-            // Actually the id, just transposed to name
-            question: {
-              name: '238947jhsdf90',
-              type: 'input',
-              meta: {
-                inputType: 'text',
-                placeholder: 'Jane Doe',
-                validation: {
-                  required: true, minLength: 2, maxLength: 5//, pattern: /^\d_XXX$/
-                }
-              }
-            }
-          },
-          {
-            position: 3,
-            // id: 7,
-            question: { type: 'dropdown', meta: { placeholder: 'Your Job', options: [{ value: 0, text: 'student' }, { value: 1, text: 'teacher' }] } }
-          },
-          {
-            position: 4,
-            question: { type: 'checkbox',
-            name: 'asjkashdkjasd',
-            meta: {
-              options: [{ value: 0, text: 'apples' }, { value: 1, text: 'bananas' }, { value: 2, text: 'strawberries' }],
-              validation: { minSelections: 2, maxSelections: 2 }
-            } }
-          },
-          {
-            position:5 , question: { type: 'textarea', name: 'my_textarea', meta: { placeholder: 'Text goes here',
-            validation: { minLength: 5 } }}
+            position:6 , question: { type: 'radio', name: 'my_radio', meta: { options: [{ value: 0, text: 'student' }, { value: 1, text: 'teacher' }],
+             validation: { required: false }
+           }}
           }
         ],
       },
