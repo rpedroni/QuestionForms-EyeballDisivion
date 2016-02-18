@@ -17,23 +17,12 @@ angular.module('it1_app')
     // TODO: Automatic question type registration?
     switch (question.type) {
       case 'input':
-      questionDirective = 'ed-question-input'
-      break
-
       case 'dropdown':
-      questionDirective = 'ed-question-dropdown'
-      break
-
       case 'radio':
-      questionDirective = 'ed-question-radio'
-      break
-
       case 'conditional':
-      questionDirective = 'ed-question-conditional'
-      break
-
       case 'checkbox':
-      questionDirective = 'ed-question-checkbox'
+      case 'button':
+      questionDirective = 'ed-question-' + question.type
       break
 
       default:

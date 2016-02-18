@@ -72,37 +72,43 @@ angular.module('it1_app')
           }
         ],
       },
-      {
-        texts: [ // Ordered list
-        ],
-        questions: [ // Ordered list
-          { position: 0,
-            question: {
-              type: 'conditional',
-              meta: { hideText: 'I don\'t play sports.', showText: 'I play these sports:',
-              question: {
-                type: 'checkbox',
-                meta: {
-                  options: [ { value: 0, text: 'Basketball' }, { value: 1, text: 'Soccer' } ]
-                }
-              }
-            }
-          }
-        },
-        ],
-      },
       // {
       //   texts: [ // Ordered list
-      //     { position: 0, text: 'My GPA is' },
-      //     { position: 2, text: 'and I am a' },
       //   ],
       //   questions: [ // Ordered list
-      //     { position: 1, question:  { name: 'gpa_value', type: 'input', meta: { inputType: 'number', placeholder: 'GPA' } } },
-      //     { position: 3, question: { type: 'dropdown',
-      //       meta: { placeholder: 'Gender', options: [{ value: 0, text: 'boy' }, { value: 1, text: 'girl' }] } }
-      //     },
+      //     { position: 0,
+      //       question: {
+      //         type: 'conditional',
+      //         meta: { hideText: 'I don\'t play sports.', showText: 'I play these sports:',
+      //         question: {
+      //           type: 'checkbox',
+      //           meta: {
+      //             options: [ { value: 0, text: 'Basketball' }, { value: 1, text: 'Soccer' } ]
+      //           }
+      //         }
+      //       }
+      //     }
+      //   },
       //   ],
       // },
+      {
+        texts: [ // Ordered list
+          { position: 0, text: 'My GPA is' },
+          { position: 2, text: 'and I am a' },
+        ],
+        questions: [ // Ordered list
+          { position: 1, question:  { name: 'gpa_value', type: 'input', meta: { inputType: 'number', placeholder: 'GPA' } } },
+          { position: 3, question: { type: 'button',
+            meta: { options: [
+              { value: 0, text: 'boy' },
+              { value: 1, text: 'girl' },
+              { value: 2, text: 'gender_2' },
+              { value: 3, text: 'gender_3' },
+              { value: 4, text: 'gender_4' },
+            ] } }
+          },
+        ],
+      },
       // {
       //   texts: [ // Ordered list
       //     { position: 0, text: 'My mom\'s maiden name is' },

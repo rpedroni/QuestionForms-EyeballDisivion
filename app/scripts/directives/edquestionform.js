@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /**
 * @ngdoc directive
@@ -7,22 +7,7 @@
 * # edQuestionForm
 */
 angular.module('it1_app')
-.directive('edQuestionForm', function (controlNamingScheme) {
-
-  // Find all the controls in the form
-  var _getFormControls = function(form) {
-    var controls = [];
-    angular.forEach(form, function (value) {
-      if (typeof value === 'object' && value.hasOwnProperty('$modelValue')) {
-        controls.push(value);
-      }
-    });
-    return controls;
-  };
-
-  var _getControlsByBlocks = function(formControls) {
-
-  };
+.directive('edQuestionForm', function ($timeout) {
 
   return {
     scope: {
@@ -37,11 +22,11 @@ angular.module('it1_app')
     link: function(scope) {
 
       // TODO: Template path
-      scope.templatePath = '../../views/directives/form-templates/' + scope.template + '.html';
+      scope.templatePath = '../../views/directives/form-templates/' + scope.template + '.html'
       // TODO: do we need the $watch or loading a template once is good enough? - Probably is!
       scope.$watch('template', function(t) {
-        scope.templatePath = '../../views/directives/form-templates/' + t + '.html';
-      });
+        scope.templatePath = '../../views/directives/form-templates/' + t + '.html'
+      })
 
     },
 
@@ -62,13 +47,13 @@ angular.module('it1_app')
       this.onQuestionUpdate = function() {
 
         // Get form controller
-        var form = $scope.form;
+        var form = $scope.form
 
         // -- Get validity from form controller
         var formValidationTree = { valid: form.$valid, blocks: {} }
 
         // -- Build model by getting each question and normalizing values into a flat object
-        var model = {};
+        var model = {}
 
         // -- Start block validation objects with all true values
         $scope.formStructure.blocks.forEach(function(b, blockIndex) {
@@ -92,9 +77,10 @@ angular.module('it1_app')
           }
         })
 
-        $scope.onUpdate({ form: form, validationTree: formValidationTree, model: model });
-      };
+        $scope.onUpdate({ form: form, validationTree: formValidationTree, model: model })
+      }
+      $timeout(this.onQuestionUpdate, 100)
 
     }
-  };
-});
+  }
+})
