@@ -32,6 +32,10 @@ angular.module('it1_app')
       questionDirective = 'ed-question-conditional'
       break
 
+      case 'checkbox':
+      questionDirective = 'ed-question-checkbox'
+      break
+
       default:
       console.warn('unknown question type')
     }
@@ -69,11 +73,9 @@ angular.module('it1_app')
           block: scope.blockIndex
         })
 
-        //
-        // scope.validations = scope.validations || {}
-
         // Build 'em
-        var e = angular.element('<' + questionDirective + ' />')
+        // We're adding ng-model so directives that will create a custom form control can require ngModel directly
+        var e = angular.element('<' + questionDirective + ' ng-model="model" name="{{ name }}" />')
         $compile(e)(scope)
         element.append(e)
       }

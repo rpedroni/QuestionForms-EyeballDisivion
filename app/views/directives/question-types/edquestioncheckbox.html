@@ -1,0 +1,13 @@
+<span ng-repeat="option in question.meta.options">
+
+  <label ng-if="option.text">
+    {{ option.text }}
+  </label>
+
+  <input
+  type="checkbox"
+  ng-model="cbModel[$index]"
+  ng-change="checkboxChanged(cbModel)"
+  />
+
+</span>
