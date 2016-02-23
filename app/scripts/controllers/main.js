@@ -76,7 +76,7 @@ angular.module('it1_app')
           // },
           {
             position:6 , question: { type: 'radio', name: 'my_radio', meta: { options: [{ value: 0, text: 'student' }, { value: 1, text: 'teacher' }],
-             validation: { required: false }
+             validation: { required: true }
            }}
           }
         ],

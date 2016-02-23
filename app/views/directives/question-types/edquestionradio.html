@@ -1,5 +1,7 @@
-<span
-ng-repeat="option in question.meta.options">
+
+<span ng-init="model = { option: question.meta.options[0].value }"></span>
+
+<span ng-repeat="option in question.meta.options">
 
 <label ng-if="option.text">
   {{ option.text }}
@@ -10,7 +12,7 @@ ng-repeat="option in question.meta.options">
 type="radio"
 ng-value="option.value"
 ng-change="onUpdate()"
-ng-model="$parent.model"
+ng-model="model.option"
 ng-required="question | validation:'required'"
 />
 
