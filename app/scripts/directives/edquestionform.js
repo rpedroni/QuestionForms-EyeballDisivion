@@ -7,7 +7,7 @@
 * # edQuestionForm
 */
 angular.module('it1_app')
-.directive('edQuestionForm', function ($timeout) {
+.directive('edQuestionForm', function () {
 
   return {
     scope: {
@@ -79,8 +79,6 @@ angular.module('it1_app')
 
         $scope.onUpdate({ form: form, validationTree: formValidationTree, model: model })
       }
-      $timeout(this.onQuestionUpdate, 100)
-
     }
   }
 })
