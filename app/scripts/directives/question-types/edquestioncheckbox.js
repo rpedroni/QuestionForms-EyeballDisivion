@@ -12,7 +12,6 @@ angular.module('it1_app')
   // Determine custom control's validity
   var _updateValidity = function(validation, ngModelController) {
     validation = validation || {}
-    var viewValue = ngModelController.$viewValue
     var setCount = ngModelController.$viewValue ? ngModelController.$viewValue.filter(function(val) { return val === true }).length : 0
 
     // required

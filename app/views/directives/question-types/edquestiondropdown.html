@@ -8,7 +8,7 @@ ng-init="model = question.meta.placeholder ? null : (model || question.meta.opti
 
 ng-required="question | validation:'required'">
 
-  <option ng-if="question.meta.placeholder" value="">
+  <option ng-if="question.meta.placeholder" value disabled>
     {{ question.meta.placeholder }}
   </option>
 

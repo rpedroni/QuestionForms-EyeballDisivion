@@ -10,18 +10,13 @@
 angular.module('it1_app')
 .controller('MainCtrl', function ($scope, $http, APIParser) {
 
-  // Possible question types
-  // button [X]
-  // list [ ] (possible same thing as button, vertically oriented)
-  // input [X] (input)
-  // case-notes [X] (textarea)
-  // checkbox [X] (checkbox)
-  // solar-dropdown [X] (dropdown)
-
   $http.get('http://cerebro-engine.herokuapp.com/api/angular/ricardo_funnel')
   .then(function(res) {
     var questions = res.data.questions.map(APIParser.parseQuestion)
+    // Mapping to one question per block since API/models don't yet support blocks
     $scope.formStructure = APIParser.buildSingleQuestionblocks(questions)
+
+    console.log("questions", res.data.questions);
   })
 
   //

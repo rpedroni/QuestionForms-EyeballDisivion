@@ -9,9 +9,12 @@
     ng-repeat="block in formStructure.blocks"
     block="block"
     index="{{ $index }}"
+
+    class="q-block"
+    ng-show="$index === 0 ? true : validationTree.blocks[$index - 1].valid"
   />
   <!-- *Visualization strategy for this view/controller -->
-  <!-- ng-show="$index === 0 ? true : validationTree.blocks[$index - 1].valid" -->
+  <!--  -->
 
 </ed-question-form>
 
@@ -21,7 +24,7 @@ TEMPLATE: {{ template }}
 <br><br>
 
 <h5>
-  FORM VALID: {{ validationTree.valid }}<br>
+  FORM VALID: {{ validationTree.valid === true }}<br>
   {{ validationTree }}
 </h5>
 
