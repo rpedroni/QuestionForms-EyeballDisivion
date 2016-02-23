@@ -15,8 +15,9 @@ angular.module('it1_app')
     var viewValue = ngModelController.$viewValue
 
     // required
-    if (!angular.isDefined(validation.required) || validation.required === true) {
-      ngModelController.$setValidity('required', angular.isDefined(viewValue) && isFinite(viewValue))
+    if (!validation.required || validation.required === true) {
+      var requiredValidity = angular.isDefined(viewValue) && (viewValue === viewValue) // Very ugly code to check for 'NaN's
+      ngModelController.$setValidity('required', requiredValidity)
     }
   }
 
