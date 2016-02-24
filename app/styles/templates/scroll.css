@@ -1,0 +1,22 @@
+.q-form {
+  position: relative;
+  /*overflow: hidden;*/
+  height: 300px;
+}
+.q-block {
+  display: block;
+  transition: all linear .5s;
+  position: absolute;
+}
+
+.q-next-block {
+  top: -100%;
+}
+
+.q-current-block {
+  top: 50%;
+}
+.q-previous-block {
+  top: 150%;
+  opacity: 0;
+}

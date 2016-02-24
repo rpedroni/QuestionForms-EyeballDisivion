@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /**
 * @ngdoc function
@@ -8,7 +8,7 @@
 * Controller of the it1_app
 */
 angular.module('it1_app')
-.controller('MainCtrl', function ($scope, $http, APIParser) {
+.controller('MainCtrl', function ($scope, $http, APIParser, $css) {
 
   $http.get('http://cerebro-engine.herokuapp.com/api/angular/ricardo_funnel')
   .then(function(res) {
@@ -16,10 +16,24 @@ angular.module('it1_app')
     // Mapping to one question per block since API/models don't yet support blocks
     $scope.formStructure = APIParser.buildSingleQuestionblocks(questions)
 
-    console.log("questions", res.data.questions);
+    console.log("questions", res.data.questions)
   })
 
+  // Set template and theme
+  // Binds stylesheet(s) to scope create/destroy events (recommended over add/remove)
+  $css.bind(['../../styles/templates/paginated.css', '../../styles/themes/lawfirmfinder.css'], $scope)
+  // $css.bind(['../../styles/templates/scroll.css', '../../styles/themes/lawfirmfinder.css'], $scope)
+
+  // Simply add stylesheet(s)
+  // $css.add(['../../styles/templates/paginated.css', '../../styles/themes/lawfirmfinder.css'])
+
+  // // Simply remove stylesheet(s)
+  // $css.remove(['my-page/my-page.css','my-page/my-page2.css'])
   //
+  // // Remove all stylesheets
+  // $css.removeAll()
+
+
   // $scope.formStructure = {
   //   blocks: [
   //     {
@@ -140,10 +154,10 @@ angular.module('it1_app')
   //     //   ],
   //     // },
   //   ]
-  // };
+  // }
 
   // Validation tree & form
-  $scope.validationTree = {};
+  $scope.validationTree = {}
   $scope.onUpdate = function(form, validationTree, model) {
     $scope.validationTree = validationTree
     $scope.errors = form.$error

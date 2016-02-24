@@ -13,17 +13,19 @@ angular.module('it1_app')
 
     var _getFirstInvalidBlockIndex = function(validationTree) {
       var firstInvalidIndex = -1
+      // TODO: Verify if these indexes always return in the correct order
       for (var index in validationTree.blocks) {
         if (validationTree.blocks[index].valid === false) {
           firstInvalidIndex = index
           break
         }
       }
-      return firstInvalidIndex
+      return +firstInvalidIndex
     }
 
-    // Shows all block up to the first invalid one. All others after it are hidden
-    var _validSequential = function(blockIndex, validationTree) {
+    // validSequential
+    // All block up to the first invalid one
+    var validSequential = function(blockIndex, validationTree) {
       // First block is always visible
       if (blockIndex === 0) {
         return true
@@ -37,6 +39,19 @@ angular.module('it1_app')
       return firstInvalidIndex === -1 || (blockIndex <= firstInvalidIndex)
     }
 
+    // validCurrentOnly
+    var validCurrentOnly = function(blockIndex, validationTree) {
+      var firstInvalidIndex = _getFirstInvalidBlockIndex(validationTree)
+      console.log(firstInvalidIndex, blockIndex, firstInvalidIndex === blockIndex);
+      return (firstInvalidIndex === -1 && blockIndex === 0) || (firstInvalidIndex === blockIndex)
+    }
+
+    var pageIndex = function(blockIndex, validationTree) {
+      var firstInvalidIndex = _getFirstInvalidBlockIndex(validationTree)
+      return firstInvalidIndex === -1 ? blockIndex : blockIndex - firstInvalidIndex
+    }
+
+    // Public API
     return function (blockIndex, validationTree, displayStrategyName) {
 
       // If no tree, just return true
@@ -45,9 +60,12 @@ angular.module('it1_app')
       }
 
       switch (displayStrategyName) {
-        case 'validSequential':
-          return _validSequential(blockIndex, validationTree)
-          break;
+        case 'validSequential': // All until first invalid (included)
+          return validSequential(blockIndex, validationTree)
+        case 'validCurrentOnly': // First invalid only
+          return validCurrentOnly(blockIndex, validationTree)
+        case 'pageIndex': // Get relative number to currently active block
+          return pageIndex(blockIndex, validationTree)
         default:
           console.warn('Unknown display strategy');
           return true

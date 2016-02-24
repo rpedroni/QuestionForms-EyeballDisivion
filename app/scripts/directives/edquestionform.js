@@ -19,17 +19,6 @@ angular.module('it1_app')
     transclude: true,
     templateUrl: '../../views/directives/ed-question-form.html',
 
-    link: function(scope) {
-
-      // TODO: Template path
-      scope.templatePath = '../../views/directives/form-templates/' + scope.template + '.html'
-      // TODO: do we need the $watch or loading a template once is good enough? - Probably is!
-      scope.$watch('template', function(t) {
-        scope.templatePath = '../../views/directives/form-templates/' + t + '.html'
-      })
-
-    },
-
     controller: function($scope) {
 
       var _questionReferences = []

@@ -37,7 +37,7 @@ angular.module('it1_app')
     scope: {
       question: '=',
       blockIndex: '@',
-      index: '@'
+      // index: '@'
     },
 
     // Require the form directive's controller to gain access to the onQuestionUpdate method
@@ -54,13 +54,12 @@ angular.module('it1_app')
         // use it to communicate with parent
         scope.onUpdate = questionFormCtrl.onQuestionUpdate
 
-        // Name definition for each question based on block and individual index
-        // or from the predefined name
-        scope.name = scope.question.name || controlNamingScheme.namingScheme(scope.blockIndex, scope.index)
+        // Name
+        scope.name = scope.question.name
 
         // Add reference to this question
         questionFormCtrl.addQuestionReference({
-          name: scope.name,
+          name: scope.question.name,
           block: scope.blockIndex
         })
 

@@ -1,34 +1,20 @@
 <style>
   .q-form {
-    padding: 20px;
-    font-family: 'Helvetica Neue, sans';
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 20px;
-    border: 1px solid gray;
-  }
-  .q-block {
-    margin-bottom: 16px;
-  }
-
-  .q-question {
-
-  }
-
-  .q-question input[type="text"], .q-question input[type="number"] {
-    height: 30px;
-    border: none;
-    border-bottom: 3px solid gray;
+    position: relative;
     text-align: center;
   }
-
-  .q-question input:focus {
-    outline: 0;
+  .q-block {
+    padding: 50px;
+    background-color: red;
+    display: block;
+    transition: all linear .5s;
+    width: 100%;
+    position: absolute;
+    left: 0;
   }
-
-  .q-question select {
-    height: 30px;
-    border: none;
-    background-color: #76d691;
-    color: white;
+  .q-block.ng-hide {
+    left: 100%;
   }
-
 </style>

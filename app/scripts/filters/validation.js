@@ -35,7 +35,9 @@ angular.module('it1_app')
 
     var validation = question.meta.validation || {}
 
-    if (!validationType || !_validations[validationType]) return
+    if (!validationType || !_validations[validationType]) {
+      return
+    }
 
     return _validations[validationType](validation)
   }

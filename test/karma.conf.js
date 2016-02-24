@@ -21,7 +21,8 @@ module.exports = function(config) {
       // bower:js
       'bower_components/angular/angular.js',
       'bower_components/angular-route/angular-route.js',
-      'bower_components/angular-ui-validate/dist/validate.js',
+      'bower_components/angular-animate/angular-animate.js',
+      'bower_components/angular-css/angular-css.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

@@ -1,4 +1,4 @@
-<h1>Cerebro - Funnel Form</h1>
+<h3>Cerebro - Funnel Form</h3>
 
 <ed-question-form
 on-update="onUpdate(form, validationTree, model)"
@@ -11,28 +11,45 @@ block="block"
 index="{{ $index }}"
 
 class="q-block"
-ng-show="$index | displayStrategy:validationTree:'validSequential'"
+ng-class="{
+  'q-current-block': ($index | displayStrategy:validationTree:'pageIndex') === 0,
+  'q-previous-block': ($index | displayStrategy:validationTree:'pageIndex') < 0,
+  'q-next-block': ($index | displayStrategy:validationTree:'pageIndex') > 0,
+}"
 />
-
+<!-- ng-show="$index | displayStrategy:validationTree:'validSequential'" -->
+<!-- TODO: move q-block class an displayStrategy into block directive -->
 
 </ed-question-form>
 
-<button ng-click="change()"/>Change Template</button>
-TEMPLATE: {{ template }}
+
 
 <br><br>
-
-<h5>
-  FORM VALID: {{ validationTree.valid === true }}<br>
-  {{ validationTree }}
-</h5>
-
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<input type="checkbox" ng-model="devMode"/> Dev Mode
 <br><br>
 
-<h5>MODEL</h5>
-{{ model | json }}
+<div ng-if="devMode">
+  <h5>
+    FORM VALID: {{ validationTree.valid === true }}<br>
+    {{ validationTree }}
+  </h5>
 
-<br><br>
+  <br><br>
 
-<h5>ERRORS</h5>
-{{ errors | json }}
+  <h5>MODEL</h5>
+  {{ model | json }}
+
+  <br><br>
+
+  <h5>ERRORS</h5>
+  {{ errors | json }}
+</div>

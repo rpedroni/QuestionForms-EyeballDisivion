@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /**
 * @ngdoc directive
@@ -10,17 +10,8 @@ angular.module('it1_app')
 .directive('edQuestionBlock', function () {
 
   var _isQuestion = function(part) {
-    return !!part.question;
-  };
-
-  // TODO: This logic must be changed if server can't respond with the ~given structure
-  var _questionIndex = function(questions) {
-    return function(question) {
-      return questions.findIndex(function(q) {
-        return q.position === question.position;
-      });
-    };
-  };
+    return !!part.question
+  }
 
   return {
     scope: {
@@ -30,10 +21,9 @@ angular.module('it1_app')
     templateUrl: '../../views/directives/edquestionblock.html',
 
     link: function(scope) {
-      scope.isQuestion = _isQuestion;
-      scope.questionIndex = _questionIndex(scope.block.questions);
-      scope.parts = scope.block.texts.concat(scope.block.questions);
+      scope.isQuestion = _isQuestion
+      scope.parts = scope.block.texts.concat(scope.block.questions)
     },
 
-  };
-});
+  }
+})
