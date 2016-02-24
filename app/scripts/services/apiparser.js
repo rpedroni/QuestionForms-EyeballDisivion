@@ -22,6 +22,9 @@ angular.module('it1_app')
         name: question.name,
         type: questionType,
         heading: question.heading,
+        subheading: question.subheading,
+        // TODO: only for buttons?
+        lowerText: question.lower_text,
         // Possibly specific to each question
         meta: _buildMeta(question, questionType)
       }

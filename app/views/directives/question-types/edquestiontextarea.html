@@ -1,23 +1,15 @@
-<span>
+<h1 class="qt-heading" ng-bind="question.heading"></h1>
+<h3 class="qt-subheading" ng-bind="question.subheading"></h3>
 
-  <span ng-if="question.meta.label">
-    {{ question.meta.label }}
-  </span>
+<textarea
+name="{{ name }}"
+ng-change="onUpdate()"
+ng-model="model"
+placeholder="{{ question.meta.placeholder }}"
+class="qt-textarea"
 
-  <textarea
-  name="{{ name }}"
-  ng-change="onUpdate()"
-  ng-model="model"
-  placeholder="{{ question.meta.placeholder }}"
-
-  ng-required="question | validation:'required'"
-  ng-minlength="question | validation:'minLength'"
-  ng-maxlength="question | validation:'maxLength'"
-  ng-pattern="question | validation:'pattern'"
-  />
-
-  <span ng-if="question.meta.labelAfter">
-    {{ question.meta.labelAfter }}
-  </span>
-
-</span>
+ng-required="question | validation:'required'"
+ng-minlength="question | validation:'minLength'"
+ng-maxlength="question | validation:'maxLength'"
+ng-pattern="question | validation:'pattern'"
+/>

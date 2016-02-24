@@ -1,16 +1,21 @@
+<h1 class="qt-heading" ng-bind="question.heading"></h1>
+<h3 class="qt-subheading" ng-bind="question.subheading"></h3>
+
 <select
 name="{{ name }}"
 ng-change="onUpdate()"
-
 ng-options="option.value as option.text for option in question.meta.options"
 ng-model="model"
 ng-init="model = question.meta.placeholder ? null : (model || question.meta.options[0].value)"
+ng-required="question | validation:'required'"
+class="qt-dropdown">
 
-ng-required="question | validation:'required'">
+<option value disabled>
+  Dummy placeholder -- delete me!
+</option>
 
-  <option ng-if="question.meta.placeholder" value disabled>
-    {{ question.meta.placeholder }}
-  </option>
-
+<option ng-if="question.meta.placeholder" value disabled>
+  {{ question.meta.placeholder }}
+</option>
 
 </select>

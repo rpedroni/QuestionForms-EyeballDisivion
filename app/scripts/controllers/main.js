@@ -20,18 +20,8 @@ angular.module('it1_app')
   })
 
   // Set template and theme
-  // Binds stylesheet(s) to scope create/destroy events (recommended over add/remove)
-  $css.bind(['../../styles/templates/paginated.css', '../../styles/themes/lawfirmfinder.css'], $scope)
-  // $css.bind(['../../styles/templates/scroll.css', '../../styles/themes/lawfirmfinder.css'], $scope)
-
-  // Simply add stylesheet(s)
-  // $css.add(['../../styles/templates/paginated.css', '../../styles/themes/lawfirmfinder.css'])
-
-  // // Simply remove stylesheet(s)
-  // $css.remove(['my-page/my-page.css','my-page/my-page2.css'])
-  //
-  // // Remove all stylesheets
-  // $css.removeAll()
+  // Binds stylesheet(s) to scope create/destroy events
+  $css.bind('../../styles/themes/lawfirmfinder.css', $scope)
 
 
   // $scope.formStructure = {

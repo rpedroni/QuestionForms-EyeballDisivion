@@ -3,21 +3,17 @@
 }
 .q-block {
   display: block;
-
   transition: all linear .5s;
   position: absolute;
-
-  /*min-height: 200px;*/
-
 }
 
-.q-next-block {
-  left: 100%;
+.q-block-page-next {
+  left: 200%;
 }
 
-.q-block.q-current-block {
+.q-block.q-block-page-current {
   left: 0;
 }
-.q-previous-block {
-  left: -100%;
+.q-block-page-previous {
+  left: -200%;
 }

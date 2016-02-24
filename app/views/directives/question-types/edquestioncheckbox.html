@@ -1,13 +1,19 @@
-<span ng-repeat="option in question.meta.options">
+<h1 class="qt-heading" ng-bind="question.heading"></h1>
+<h3 class="qt-subheading" ng-bind="question.subheading"></h3>
 
-  <label ng-if="option.text">
-    {{ option.text }}
-  </label>
+<span
+ng-repeat="option in question.meta.options"
+class="qt-checkbox">
 
-  <input
-  type="checkbox"
-  ng-model="cbModel[$index]"
-  ng-change="checkboxChanged(cbModel)"
-  />
+<input
+type="checkbox"
+ng-model="cbModel[$index]"
+ng-change="checkboxChanged(cbModel)"
+/>
+
+<label ng-if="option.text">
+  {{ option.text }}
+</label>
+
 
 </span>

@@ -1,8 +1,11 @@
+<h1 class="qt-heading" ng-bind="question.heading"></h1>
+<h3 class="qt-subheading" ng-bind="question.subheading"></h3>
+
 <a class="qt-button"
 ng-repeat="option in question.meta.options"
 ng-click="buttonClicked(option.value)"
 href="">
-
-{{ option.text }}
-
+  {{ option.text }}
 </a>
+
+<h3 class="qt-lower-text" ng-bind="question.lowerText"></h3>
